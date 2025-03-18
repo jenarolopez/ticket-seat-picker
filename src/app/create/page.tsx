@@ -71,20 +71,18 @@ export default function CreateSeatPlan() {
     setStartSeatNumber(startSeatNumber + seatsCount);
   };
 
-  // Delete a single seat
-  const handleDeleteSeat = (rowId: string, seatId: string) => {
+  // Add a new function to delete all selected seats
+  const handleDeleteSelectedSeats = () => {
     const updatedRows = rows.map(row => {
-      if (row.id === rowId) {
-        return {
-          ...row,
-          seats: row.seats.filter(seat => seat.id !== seatId)
-        };
-      }
-      return row;
+      return {
+        ...row,
+        seats: row.seats.filter(seat => !seat.isSelected)
+      };
     });
     
     setRows(updatedRows);
   };
+
 
   // Edit a seat number
   const handleEditSeat = (rowId: string, seatId: string) => {
@@ -159,9 +157,18 @@ export default function CreateSeatPlan() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Create Seat Plan</h1>
-          <button className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
-            Save Seat Plan
-          </button>
+          <div className="flex space-x-3">
+            <button 
+              onClick={handleDeleteSelectedSeats}
+              className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 flex items-center"
+            >
+              <TrashIcon className="h-5 w-5 mr-2" />
+              Delete Selected
+            </button>
+            <button className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+              Save Seat Plan
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -294,7 +301,7 @@ export default function CreateSeatPlan() {
 
               {/* Seat Map Container */}
               <div className="overflow-x-auto">
-                <div className="min-w-max space-y-6">
+                <div className="min-w-max space-y-6 pt-5">
                   {rows.map((row) => (
                     <div key={row.id} className="flex items-center space-x-4">
                       <div className="flex items-center space-x-2">
@@ -343,13 +350,7 @@ export default function CreateSeatPlan() {
                                 ✏️
                               </button>
                               {/* Delete Seat Button */}
-                              <button
-                                onClick={() => handleDeleteSeat(row.id, seat.id)}
-                                className="w-5 h-5 bg-white rounded-full border border-gray-300 flex items-center justify-center"
-                                title="Delete Seat"
-                              >
-                                <TrashIcon className="h-3 w-3 text-red-600" />
-                              </button>
+                              
                             </div>
                           </div>
                         ))}
