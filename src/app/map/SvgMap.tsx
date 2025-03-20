@@ -29,6 +29,7 @@ const SvgMap = (props: React.SVGProps<SVGSVGElement>) => {
       <path 
         id="blueSquare"
         fill={hoveredShape === "blueSquare" ? "#7060FF" : "#50F"} 
+        onClick={()=>{alert("blueSquare")}}
         d="M522 162h195v195H522z" 
         className={`cursor-pointer transition-all duration-300 ${hoveredShape === "blueSquare" ? "stroke-2 stroke-black" : ""}`}
         onMouseEnter={() => handleMouseEnter("blueSquare")}
@@ -42,6 +43,7 @@ const SvgMap = (props: React.SVGProps<SVGSVGElement>) => {
         d="M371 260c0 52.467-42.533 95-95 95s-95-42.533-95-95 42.533-95 95-95 95 42.533 95 95Z"
         className={`cursor-pointer transition-all duration-300 ${hoveredShape === "redCircle" ? "stroke-2 stroke-black" : ""}`}
         onMouseEnter={() => handleMouseEnter("redCircle")}
+        onClick={()=>{alert("redCircle")}}
         onMouseLeave={handleMouseLeave}
       />
       
@@ -52,6 +54,7 @@ const SvgMap = (props: React.SVGProps<SVGSVGElement>) => {
         d="m939 173 19.533 60.116h63.207l-51.135 37.153 19.532 60.115L939 293.231l-51.137 37.153 19.532-60.115-51.137-37.153h63.209L939 173Z"
         className={`cursor-pointer transition-all duration-300 ${hoveredShape === "greenStar" ? "stroke-2 stroke-black" : ""}`}
         onMouseEnter={() => handleMouseEnter("greenStar")}
+        onClick={()=>{alert("greenStar")}}
         onMouseLeave={handleMouseLeave}
       />
       
@@ -62,6 +65,7 @@ const SvgMap = (props: React.SVGProps<SVGSVGElement>) => {
         d="M302.5 464.5c-26.833 20.667-66.9 66.8-12.5 86l57.5-24-45-62Z"
         className={`cursor-pointer transition-all duration-300 ${hoveredShape === "blackShape1" ? "stroke-2 stroke-white" : "stroke-[0.5] stroke-black"}`}
         onMouseEnter={() => handleMouseEnter("blackShape1")}
+        onClick={()=>{alert("blackShape1")}}
         onMouseLeave={handleMouseLeave}
       />
       
@@ -72,6 +76,7 @@ const SvgMap = (props: React.SVGProps<SVGSVGElement>) => {
         d="M510 425l-84 154.5L553.5 631 732 566.5 510 425Z"
         className={`cursor-pointer transition-all duration-300 ${hoveredShape === "blackShape2" ? "stroke-2 stroke-white" : "stroke-[0.5] stroke-black"}`}
         onMouseEnter={() => handleMouseEnter("blackShape2")}
+        onClick={()=>{alert("blackShape2")}}
         onMouseLeave={handleMouseLeave}
       />
     </svg>
